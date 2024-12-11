@@ -1,0 +1,50 @@
+Frontend:
+-----------------------------
+React.js single-page application.
+Components for Upload, Search, and Edit forms.
+Axios or Fetch API for making REST calls to the backend.
+Backend (Spring Boot):
+
+Spring MVC for REST endpoints.
+--------------------------------------
+JPA/Hibernate to interact with PostgreSQL.
+A service layer that handles CSV parsing, validation, and data persistence.
+Controllers to expose endpoints to the frontend.
+Database (PostgreSQL):
+
+Single schema with a pricing_record table
+Columns: id, store_id, sku, product_name, price, record_date.
+
+Deployment:
+------------------
+Containerize frontend and backend using Docker.
+Use Kubernetes deployments and services to run at scale.
+
+####################
+Non-Functional Requirements & How They Are Addressed
+
+Performance:
+Caching frequently accessed data (if needed).
+Database indexing for quick search.
+Horizontal scaling using Kubernetes replicas.
+
+Availability:
+Deploy multiple replicas behind a load balancer.
+Health checks and readiness probes in Kubernetes.
+
+Reliability:
+Proper exception handling, return meaningful HTTP status codes.
+Automated tests and CI/CD pipeline to ensure build quality.
+
+Maintainability:
+Clear separation of concerns (controller, service, repository).
+Unit tests and integration tests.
+Well-documented code and API endpoints.
+
+Security & Compliance:
+Parameter validation to prevent SQL injection.
+Secure configuration for database credentials (e.g., environment variables, secrets in Kubernetes).
+
+Scalability:
+Stateless services, easy to scale horizontally.
+Containerization and orchestration with Kubernetes.

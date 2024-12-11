@@ -1,0 +1,24 @@
+         +------------+
+         |  CSV Files |
+         +-----+------+
+               |
+               v
+        +-------------+                  +--------------+
+        |   Web App   | <----> Browser   |   End User   |
+        |   Frontend  |                  +------+-------+
+        |  (React.js) |                         
+        +-----+--------+                         
+              |  (REST API calls: JSON)          
+              v                                   
+        +-----------------+                       
+        |   Backend       |                       
+        | (Spring Boot)   |<----> PostgreSQL DB   
+        +--------+--------+
+                 |
+             File Storage (Optional, if needed)
+
+1) Users interact with the web frontend (React.js) via a browser.
+2) The frontend sends requests to the backend (Spring Boot).
+3) The backend connects to a PostgreSQL database to persist and retrieve pricing data.
+4) Users can upload CSV files containing pricing data. The backend processes and stores this data in the database.
+5) Users can search, view, and edit the records via the frontend which communicates with the backend’s REST API.

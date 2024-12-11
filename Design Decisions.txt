@@ -1,0 +1,19 @@
+Design Decisions
+
+Technology Stack:
+
+Frontend: React.js for a SPA, easy state management and AJAX calls.
+Backend: Java + Spring Boot provides a robust, enterprise-grade solution.
+Database: PostgreSQL, a reliable relational DB that can scale to handle 3000 stores and large datasets.
+
+CSV Processing:
+Processed server-side using OpenCSV or standard Java CSV parsing libraries.
+Bulk insert to reduce database overhead.
+
+Scalability:
+Stateless REST API allows horizontal scaling via Kubernetes.
+Database indices on frequently searched fields (e.g., store_id, sku) to improve query performance.
+
+Security:
+Could implement JWT-based authentication.
+Secure connections with HTTPS (enforced by load balancer or ingress).
