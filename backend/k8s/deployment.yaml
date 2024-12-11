@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: retail-backend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: retail-backend
+  template:
+    metadata:
+      labels:
+        app: retail-backend
+    spec:
+      containers:
+      - name: retail-backend
+        image: your-docker-registry/retail-backend:1.0.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:postgresql://postgres-service:5432/pricingdb"
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "postgres"
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: "postgres"
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10

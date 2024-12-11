@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: retail-frontend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: retail-frontend
+  template:
+    metadata:
+      labels:
+        app: retail-frontend
+    spec:
+      containers:
+        - name: retail-frontend
+          image: your-docker-registry/retail-frontend:1.0.0
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
